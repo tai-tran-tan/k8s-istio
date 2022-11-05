@@ -1,0 +1,6 @@
+namespace: web-app
+resources:
+  - ./deployment.yaml
+  - ./namespace.yaml
+  - ./nginx-svc.yaml
+  - ./gateway.yaml

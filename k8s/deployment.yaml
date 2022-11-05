@@ -26,8 +26,8 @@ spec:
       name: web-app-nginx
     spec:
       containers:
-        - image: web-app-nginx:latest
-          imagePullPolicy: IfNotPresent
+        - image: web-app-nginx:1.0.0
+          imagePullPolicy: Never
           name: web-app-nginx
       dnsPolicy: ClusterFirst
       restartPolicy: Always
