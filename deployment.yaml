@@ -1,0 +1,33 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: web-app
+  annotations:
+    description: Web app running on nginx
+  labels:
+    k8s-app: web-app-nginx
+  name: web-app-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      k8s-app: web-app-nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        description: Web app running on nginx
+      labels:
+        k8s-app: web-app-nginx
+      name: web-app-nginx
+    spec:
+      containers:
+        - image: web-app-nginx:latest
+          imagePullPolicy: IfNotPresent
+          name: web-app-nginx
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
